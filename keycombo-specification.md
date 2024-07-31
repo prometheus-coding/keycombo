@@ -1,0 +1,63 @@
+# init the love of coding
+---
+# NVIM Plugin - keycombo
+utility for giving you a fun way to coding
+
+## Premessa / Introduzione
+questo plugin e' stato realizzato con l'idea di sostituire i videogiochi con la produttivita,
+come videogiocatore ammetto di aver passato tanto tempo ai videogiochi, ore e ore a giocare, 
+decisi quindi di passare per la prima volta a programmare e cercare un modo per soddisfare il mio cervello
+allo stesso modo in cui lo faceva un videogioco. In questo modo potro passare ore e ore motivato a scrivere codici.
+Ovviamente c'e' da dire che non e' propriamente necessario ma avere un motivo in piu per fare  qualcosa potrebbe esseere utili per alcune persone
+specialmente a persone che come me si distraggono spesso.
+- l'obbiettivo e' semplicemente trovare un modo gratificante di programmare con nvim. 
+
+---
+## Panoramica del Sistema
+- fatto su figma il la panoramica , da consultare perche mostra collegamento tra front end back end plugin e utente.
+chiamate API da html a backend e invio package json a backend da plugin
+- verra utilizzato in back-end mongodb nosql per la gestione dati, verranno gestiti tramite package.json
+
+## REQUISITI FUNZIONALI
+UTENTE accedera a sito con email e password, e vorra richiedere di vedere la sua pagina, frontend richiama i dati da backend e mostrera a utente.
+il back end si aggiornera quando il plugin avra mandato payload a backend.
+
+e' importante che ci siano controlli per quanto riguarda hacking, e controllo invio dati.
+
+## REQUISITI NON FUNZIONALI
+- il programma sara veloce! subito a dare i dati e rispondere alle chiamate. Mentre cambiamento dei dati sara piu o meno veloce,
+metteremo certi orari in cui si aggiornano i dati
+- aws https
+- affidabilita: errori possibili, vengono inviati a payload che non vengano inviati script o attivati script sia da
+plugin e front end quindi doppi controlli.
+
+### ATTENZIONI a cio che viene condiviso in github!
+
+## piani di Test, 
+per ora collegamento tra front e back e asincronia di informazioni e richieste solo in certe circostanze.
+
+## glossario
+
+# RIFERIMENTI
+- per qualsiasi cosa riguardante organizzazione lavoro a MindfulLearner e plugin
+- per backend a pasta08
+- per front end a surefire-hu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
