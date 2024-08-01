@@ -30,5 +30,3 @@ Per ora, collegamento tra front-end e back-end e asincronia di informazioni e ri
 - Per il front-end a surefire-hu.
 
 --- 
-
-This format maintains all the original information while improving the clarity and structure for better understanding by other programmers.
