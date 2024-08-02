@@ -45,12 +45,6 @@ end
 
 -- TOKEN ##############
 
--- local id_token = "bf764e4d1e299b00d6f4be2a8a2c1461a7d4ca02c9121bf82dcb897322358e3b"
--- 
---  nvim --cmd "set rtp+=." lua/keycombo.lua
--- :lua require("keycombo").setup()
--- :lua require('keycombo').sendRequest()
-
 
 -- TOKEN END ###########
 
@@ -58,12 +52,12 @@ end
 -- START POST REQUEST ## SENDING DATA!!!! 
 -- Funzione per inviare una richiesta HTTP POST
 function M.sendRequest()
-    local path = "http://localhost:3000/api/v1/nvim-plugin/sendScore"
+    local path = "http://localhost:3000/api/v1/nvim-plugin/sendscore"
     local payload = [[
     {
-        "id_token": "bf764e4d1e299b00d6f4be2a8a2c1461a7d4ca02c9121bf82dcb897322358e3b",
+        "id_token": "id_token",
         "userName": "userName",
-        "totalKeyPressed": 2
+        "totalKeyPressed": "contatore"
     }
     ]]
     local response_body = {}
