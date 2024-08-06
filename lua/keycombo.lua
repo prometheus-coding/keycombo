@@ -14,6 +14,17 @@ function M.setup()
 end
 
 function M.show_key(key)
+
+    -- api outwrite
+    local key_hex = string.format("%02x", string.byte(key, 1))
+
+    -- Filter out mouse inputs
+    if  key_hex == "80" then
+        vim.o.statusline = "matched mouse | Count: " .. M.counter
+        vim.api.nvim_command('redrawstatus')
+        return
+    end
+
     table.insert(M.keySequence, key)
     if #M.keySequence > 4 then
         table.remove(M.keySequence, 1)  -- Keep only the last 4 keys pressed
@@ -45,7 +56,7 @@ end
 
 -- TOKEN ##############
 
--- local id_token = "bf764e4d1e299b00d6f4be2a8a2c1461a7d4ca02c9121bf82dcb897322358e3b"
+ local id_token = "bf764e4d1e299b00d6f4be2a8a2c1461a7d4ca02c9121bf82dcb897322358e3b"
 -- 
 --  nvim --cmd "set rtp+=." lua/keycombo.lua
 -- :lua require("keycombo").setup()
@@ -59,20 +70,21 @@ end
 -- Funzione per inviare una richiesta HTTP POST
 function M.sendRequest()
     local path = "http://localhost:3000/api/v1/nvim-plugin/sendScore"
-    local payload = [[
+    local payload = string.format([[
     {
-        "id_token": "bf764e4d1e299b00d6f4be2a8a2c1461a7d4ca02c9121bf82dcb897322358e3b",
+        "id_token": "%s",
         "userName": "userName",
-        "totalKeyPressed": 2
+        "totalKeyPressed": %d
     }
-    ]]
+    ]], id_token, M.counter)
+
     local response_body = {}
 
     local res, code, response_headers, status = http.request {
         url = path,
         method = "POST",
         headers = {
-            ["Authorization"] = "Bearer YourToken", -- sistemare token  
+            ["Authorization"] = "Bearer " .. id_token, -- sistemare token  
             ["Content-Type"] = "application/json",
             ["Content-Length"] = tostring(#payload)
         },
