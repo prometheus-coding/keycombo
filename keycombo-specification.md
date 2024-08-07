@@ -1,4 +1,3 @@
-Here's your document reformatted for better readability among programmers, without removing or adding any content:
 
 ---
 
@@ -27,6 +26,6 @@ Per ora, collegamento tra front-end e back-end e asincronia di informazioni e ri
 ## Riferimenti
 - Per qualsiasi cosa riguardante organizzazione del lavoro a MindfulLearner e plugin.
 - Per il back-end a pasta08.
-- Per il front-end a surefire-hu.
+- Per il front-end a MindfulLearner
 
 --- 

@@ -15,6 +15,7 @@ end
 
 function M.show_key(key)
 
+
     -- api outwrite
     local key_hex = string.format("%02x", string.byte(key, 1))
 
@@ -25,11 +26,14 @@ function M.show_key(key)
         return
     end
 
+
+    -- strange code there i think is not right
     table.insert(M.keySequence, key)
     if #M.keySequence > 4 then
-        table.remove(M.keySequence, 1)  -- Keep only the last 4 keys pressed
+        table.remove(M.keySequence, 1)  -- Keep only the last 4 keys pressed- add somethign to remove everything
     end
 
+-- is okay active at everyclick seems good lookign for boolean true false
     if M.check_sequence() then
         M.counter = M.counter + 500
         vim.o.statusline = "key combo +500! Count: " .. M.counter
@@ -41,6 +45,7 @@ function M.show_key(key)
     vim.api.nvim_command('redrawstatus')
 end
 
+--checking the sequence logic with != pair
 function M.check_sequence()
     if #M.keySequence ~= 4 then
         return false
@@ -55,14 +60,13 @@ function M.check_sequence()
 end
 
 -- TOKEN ##############
-
  local id_token = "bf764e4d1e299b00d6f4be2a8a2c1461a7d4ca02c9121bf82dcb897322358e3b"
+
 -- 
 --  nvim --cmd "set rtp+=." lua/keycombo.lua
 -- :lua require("keycombo").setup()
 -- :lua require('keycombo').sendRequest()
-
-
+--
 -- TOKEN END ###########
 
 
@@ -78,8 +82,10 @@ function M.sendRequest()
     }
     ]], id_token, M.counter)
 
+    -- declaring local response for null {} is to prepare like a print
     local response_body = {}
 
+    -- better understand better response, Post path, bearer
     local res, code, response_headers, status = http.request {
         url = path,
         method = "POST",
