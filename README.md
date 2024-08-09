@@ -6,3 +6,4 @@ This project is designed to play a sound with every keyboard click within a cert
 
  nvim --cmd "set rtp+=." lua/keycombo.lua
 
+ piccole modifiche di sistema
