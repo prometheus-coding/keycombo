@@ -60,7 +60,7 @@ function M.check_sequence()
 end
 
 -- TOKEN ##############
- local id_token = "bf764e4d1e299b00d6f4be2a8a2c1461a7d4ca02c9121bf82dcb897322358e3b"
+ local id_token = "8d9ab44265e95a626d1c260b4b77930e454a47fb9902be0d1beda3682b53a060"
 
 -- 
 --  nvim --cmd "set rtp+=." lua/keycombo.lua
@@ -78,7 +78,7 @@ function M.sendRequest()
     {
         "id_token": "%s",
         "userName": "userName",
-        "totalKeyPressed": %d
+        "score": %d
     }
     ]], id_token, M.counter)
 
