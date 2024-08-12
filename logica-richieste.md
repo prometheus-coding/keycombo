@@ -51,6 +51,7 @@ Considerazione: di norma, il backend non invia richieste GET e POST. Sono più g
 - se verificato con LinkedIn, Gmail o GitHub
 - ruolo (se admin, giocatore vecchio, nuovo o uno tra i top player)
 - numero di telefono
+-numero di click non so se mettere qui i dati dei click o combo(?) parlarne con ethan
 
 ### Tabella tokens
 - token_id (univoco identificatore)
