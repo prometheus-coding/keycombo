@@ -19,7 +19,7 @@
 - Aggiorna i dati quando, ad esempio, viene cambiato nome, immagine, ecc.
 - Restituzione di risultati, ad esempio un messaggio in chat, errori o status.
 - Richiesta del token ricevuto dall'utente.
-- Con GET fornisce istantaneamente il tasto senza dover cercare i dati nel server, in questo modo riduce il carico sul server e accelera i tempi di risposta.
+- Con GET al caching fornisce istantaneamente il tasto senza dover cercare i dati nel server, in questo modo riduce il carico sul server e accelera i tempi di risposta.
 
 ## Il backend GET e POST swag (SSR)
 Esempio di SSR (Server Side Rendering):
