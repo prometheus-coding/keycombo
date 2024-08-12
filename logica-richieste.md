@@ -1,6 +1,6 @@
 # Logica richieste back e front e plugin
 
-## Il front end GET o POST di front e back
+# Il front end GET o POST di front e back
 ### GET
 - L'utente potrebbe chiedere di voler vedere il profilo; di conseguenza, farà un GET e, con il suo accesso autorizzato, chiederà al back-end di mostrare i suoi dati. Stessa cosa se va nel sito: anche senza accesso potrà vedere la tabella di classifica, quindi eseguirà un GET al back-end per vedere i dati.
 - Quando vorrà chiedere accesso alla pagina e alle diverse pagine private per lui, o quando vorrà modificare il suo profilo, ad esempio cambiare il nome, dovrà avere un ID o IP bannabile.
@@ -73,7 +73,7 @@ Considerazione: di norma, il backend non invia richieste GET e POST. Sono più g
 - click su post
 - numero di post fatti
 - post dell'utente
-- azioni fatte
+- azioni fatt
 - giorno dell'azione
 - tempo di online o utilizzo di nvim e tempo di permanenza sul sito
 - messaggi inviati, ecc.
@@ -88,4 +88,30 @@ Considerazione: di norma, il backend non invia richieste GET e POST. Sono più g
 ## Perché token separati:
 - Perché quando verrà generato un token, sarà collegato con user_id, che verificherà tutti i login. Verrà collegato subito dopo alla creazione di ID e sarà cambiabile in caso di necessità.
 - Il token non sarà nell'utente perché potrebbe avere anche diversi token.
+
+
+# PLUGIN E INTERAZIONE CON BACKEND
+## PLUGIN A BACKEND
+### POST DEL PLUGIN A BACKEND
+Questi post conterranno un token di accesso, che andrà a verificare l'utente e quindi accedere al cambio di alcuni dati del database tramite il post. 
+Esempio: il numero di tasti cliccati andrà a modificare il database dell'utente autorizzato al token e associato al token.
+
+- Il plugin nvim manderà parametri JSON in POST al backend tramite /api/trackusage.
+- nvim invierà post per il completamento di progetti, commit?
+- POST di attività maliziosa: in caso di rilevazione di attività strane, il programma manderà automaticamente al server la segnalazione di tali attività.
+
+### GET DI PLUGIN A BACKEND
+Sarà necessaria una connessione a internet per fare in modo che GET possa verificare il codice. Quindi, per aggiornamenti di dati, un utente dovrà essere connesso e dare feedback di utilizzo.
+- GET per la verifica del token: il plugin chiede al backend di verificare il suo accesso.
+- GET per la verifica della sua attività, controllo di autoclicker, ecc.
+- GET per l'utente: verifica della connessione con il backend.
+- GET per richiedere aggiornamenti al server.
+- GET: il plugin può richiedere le sue statistiche. Ovviamente verrà registrato alla sessione il suo numero di tasti, ma il totale sarà visualizzabile solo sul sito.
+
+## DA BACKEND A PLUGIN
+### GET DEL BACKEND A PLUGIN
+- GET: il backend vuole chiedere la configurazione attuale dell'utente, tipo token, le sue configurazioni, ecc.
+
+### POST DEL BACKEND A PLUGIN
+- POST: invia alert di attività sospetta.
 
