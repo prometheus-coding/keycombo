@@ -4,7 +4,19 @@ local ltn12 = require("ltn12")
 
 M.counter = 0
 M.keySequence = {}
-M.targetSequence = {'g', 'g', 'V', 'G'}
+-- Target sequences of keys for specific actions
+M.targetSequences = {
+    -- Sequence to swap two characters
+    xp = {'x', 'p'},
+    -- Sequence to select a block including the line before the '{'
+    vaBV = {'v', 'a', 'B', 'V'},
+    -- Sequence to select the whole function if the cursor is on the function name
+    VdollaroPercentuale = {'V', '$', '%'},
+    -- Custom sequence to yank, comment, and paste a line
+    zz_nmap = {'y', 'y', 'g', 'c', 'c', 'p'},
+    -- Custom sequence to select, yank, and paste with visual mode mapping
+    zz_vmap = {'V', '<Esc>', 'g', 'v', 'y', 'g', 'v', 'g', 'c', '`', '>', 'p'}
+}
 
 function M.setup()
     vim.on_key(function(key)
@@ -60,7 +72,7 @@ function M.check_sequence()
 end
 
 -- TOKEN ##############
- local id_token = "8d9ab44265e95a626d1c260b4b77930e454a47fb9902be0d1beda3682b53a060"
+ local id_token = "8c7e013fcc0f5b778cbcf1f98c56938c6f6391520c4152c910677db2f0b049df"
 
 -- 
 --  nvim --cmd "set rtp+=." lua/keycombo.lua
@@ -73,12 +85,12 @@ end
 -- START POST REQUEST ## SENDING DATA!!!! 
 -- Funzione per inviare una richiesta HTTP POST
 function M.sendRequest()
-    local path = "http://localhost:3000/api/v1/nvim-plugin/sendScore"
+    local path = "http://localhost:3000/api/v1/users/updateUserScore"
     local payload = string.format([[
     {
         "id_token": "%s",
         "userName": "userName",
-        "score": %d
+        "total_key_pressed": %d
     }
     ]], id_token, M.counter)
 
