@@ -5,17 +5,17 @@ local ltn12 = require("ltn12")
 M.counter = 0
 M.keySequence = {}
 -- Target sequences of keys for specific actions
+
+
+-- il problema sta sul fatto che sono array dentro array, non so se la funzione e' gisuta probabilmente e' sbaglaita
 M.targetSequences = {
     -- Sequence to swap two characters
-    xp = {'x', 'p'},
     -- Sequence to select a block including the line before the '{'
-    vaBV = {'v', 'a', 'B', 'V'},
+    vaBV = {'k','k','k','k'},
     -- Sequence to select the whole function if the cursor is on the function name
-    VdollaroPercentuale = {'V', '$', '%'},
-    -- Custom sequence to yank, comment, and paste a line
-    zz_nmap = {'y', 'y', 'g', 'c', 'c', 'p'},
-    -- Custom sequence to select, yank, and paste with visual mode mapping
-    zz_vmap = {'V', '<Esc>', 'g', 'v', 'y', 'g', 'v', 'g', 'c', '`', '>', 'p'}
+    VdollaroPercentuale = {'j','j','j','j'},
+    ggg = {'g','g','g','g'},
+    ar = {'j','g'}
 }
 
 function M.setup()
@@ -26,30 +26,26 @@ function M.setup()
 end
 
 function M.show_key(key)
-
-
-    -- api outwrite
     local key_hex = string.format("%02x", string.byte(key, 1))
 
-    -- Filter out mouse inputs
-    if  key_hex == "80" then
+    -- Filtra gli input del mouse
+    if key_hex == "80" then
         vim.o.statusline = "matched mouse | Count: " .. M.counter
         vim.api.nvim_command('redrawstatus')
         return
     end
 
-
-    -- strange code there i think is not right
+    -- Inserisci il tasto nella sequenza e mantieni solo gli ultimi 4 tasti
     table.insert(M.keySequence, key)
     if #M.keySequence > 4 then
-        table.remove(M.keySequence, 1)  -- Keep only the last 4 keys pressed- add somethign to remove everything
+        table.remove(M.keySequence, 1)
     end
 
--- is okay active at everyclick seems good lookign for boolean true false
+    -- Controlla se la sequenza corrisponde a una delle sequenze target
     if M.check_sequence() then
         M.counter = M.counter + 500
         vim.o.statusline = "key combo +500! Count: " .. M.counter
-        M.keySequence = {}  -- Reset the sequence after a match
+        M.keySequence = {}  -- Resetta la sequenza dopo una corrispondenza
     else
         M.counter = M.counter + 1
         vim.o.statusline = string.format("Key pressed: %s | Count: %d", key, M.counter)
@@ -57,19 +53,30 @@ function M.show_key(key)
     vim.api.nvim_command('redrawstatus')
 end
 
---checking the sequence logic with != pair
+-- Funzione per confrontare la sequenza corrente con tutte le sequenze target
 function M.check_sequence()
-    if #M.keySequence ~= 4 then
+    for name, sequence in pairs(M.targetSequences) do
+        if M.compareSequences(M.keySequence, sequence) then
+            return true
+        end
+    end
+    return false
+end
+
+-- Funzione per confrontare due sequenze
+function M.compareSequences(keySequence, targetSequence)
+    if not keySequence or not targetSequence then
         return false
     end
 
-    for i, v in ipairs(M.targetSequence) do
-        if M.keySequence[i] ~= v then
+    for i, v in ipairs(targetSequence) do
+        if keySequence[i] ~= v then
             return false
         end
     end
     return true
 end
+
 
 -- TOKEN ##############
  local id_token = "8c7e013fcc0f5b778cbcf1f98c56938c6f6391520c4152c910677db2f0b049df"
