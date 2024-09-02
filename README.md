@@ -4,7 +4,7 @@
 
 ### **LINK UTILI:**
 - **Spiegazione Progetto:** (https://github.com/MindfulLearner/keycombo/blob/main/keycombo-specification.md)
-- **Keycombo Spiegazione Logica Frontend Backend Plugin LOGIC:** (https://www.figma.com/board/YVIINLHGLZdlFlwzhvX9lF/keycombo-logica?node-id=50-969&t=OzeXMZVKzJ3BnlBz-1)
+- **Keycombo Spiegazione Logica Frontend Backend Plugin LOGIC:** (https://www.figma.com/board/YVIINLHGLZdlFlwzhvX9lF/keycombo-logica?node-id=0-1&t=SjNAGJUTUMNpozuA-1)
 - **Spiegazione GET POST Frontend Backend e DATABASE:** (https://github.com/MindfulLearner/keycombo/blob/main/logica-richieste.md)
 - **Keycombo Frontend UIX:** (https://www.figma.com/proto/0TVrIo7hwvXkJc1WcZe0SO/Untitled?node-id=0-1&t=wPCtO7hHjyt6BA0r-1)
 
